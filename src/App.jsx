@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import FormPage from './components/FormPage';
-import SummaryPage from './components/SummaryPage';
+import FormPage from './components/FormPage.jsx';
+import SummaryPage from './components/SummaryPage.jsx';
+
 
 const App = () => (
   <Router>

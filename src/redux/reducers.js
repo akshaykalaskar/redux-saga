@@ -1,26 +1,28 @@
-import { SUBMIT_FORM, SUBMIT_FORM_SUCCESS } from './actions';
+import { createSlice } from '@reduxjs/toolkit';
 
+// Initial state
 const initialState = {
   formData: null,
   submissionSuccess: false,
 };
 
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SUBMIT_FORM:
-      return {
-        ...state,
-        formData: action.payload,
-        submissionSuccess: false,
-      };
-    case SUBMIT_FORM_SUCCESS:
-      return {
-        ...state,
-        submissionSuccess: true,
-      };
-    default:
-      return state;
-  }
-};
+// Create a slice
+const formSlice = createSlice({
+  name: 'form',
+  initialState,
+  reducers: {
+    submitForm(state, action) {
+      state.formData = action.payload;
+      state.submissionSuccess = false;
+    },
+    submitFormSuccess(state) {
+      state.submissionSuccess = true;
+    },
+  },
+});
 
-export default rootReducer;
+// Export actions
+export const { submitForm, submitFormSuccess } = formSlice.actions;
+
+// Export the reducer
+export default formSlice.reducer;
